@@ -1,0 +1,79 @@
+<!DOCTYPE html> 
+	<html lang="en"> 
+	<head> 
+		<meta charset="UTF-8"> 
+		<title>Trabajando con checkboxes AngularJS</title> 
+	</head> 
+    <body ng-app="app"> 
+        <div ng-app="apiApp" ng-controller="apiAppCtrl as vm"> 
+            
+            <h1>Pruebo Ajax con JSONP</h1> 
+            
+            <p> Busca cerveza: 
+                
+                <input type="text" ng-model="vm.nombre"> 
+                
+                <input type="button" value="Buscar" ng-click="vm.buscaCervezas()"> 
+            
+            </p> 
+            
+            <aside> 
+                
+                <h2>Filtra:</h2>
+
+                <input type="text" ng-model="vm.filtroCliente"> 
+                
+                <h2>Orden</h2> 
+                
+                <p> 
+                    
+                    <button ng-click="vm.orden=false">Alfabetico</button>
+                    
+                    <br /> 
+                    
+                    <button ng-click="vm.orden=true">Contrario</button> 
+                
+                </p> 
+                
+                <p> 
+                    
+                    <input type="radio" name="campo" ng-model="vm.campo" value="name"> Nombre 
+                    
+                    <br /> 
+                    
+                    <input type="radio" name="campo" ng-model="vm.campo" value="description"> Descripción 
+                
+                </p> 
+            
+            </aside> 
+            
+            <section> 
+                
+                <ul> 
+                    
+                    <li ng-repeat="cerveza in vm.cervezas | filter:vm.filtroCliente | orderBy:vm.campo:vm.orden" ng-class="{even: $even, odd: $odd}"> 
+                        
+                        <span>{{$index +1}}.- {{cerveza.name}},</span> {{ cerveza.description }} 
+                    
+                    </li> 
+                
+                </ul>
+             </section> 
+            
+        </div>
+
+          
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular.min.js"></script> 
+        
+        <script> 
+            var app = angular.module("app", []) 
+            app.controller("appCtrl", function(){ 
+                var vm = this; //podríamos inicializar valores del modelo //vm.activo = false;
+                vm.avisar = function(){ 
+                    console.log("cambié"); 
+                } 
+            }); 
+        </script> 
+    </body>
+</html>

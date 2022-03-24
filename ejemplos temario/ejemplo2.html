@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div ng-app ng-init="pensamientos = [];"> 
+        <h1>Altavoz AngularJS</h1> 
+        <p> ¿Qué hay de nuevo? <br /> 
+            <input type="text" ng-model="nuevoPensamiento" /> 
+            <input type="button" value="Agregar" ng-click="pensamientos.push(nuevoPensamiento); nuevoPensamiento = '';" /> 
+        </p> 
+        <h2>Pensamientos que has tenido</h2> 
+        <p ng-repeat="pensamiento in pensamientos" ng-init="paso = $index"> 
+            Pensaste esto: {{pensamiento}} (Iteración con índice {{paso}}) 
+        </p> 
+    </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+</body>
+</html>

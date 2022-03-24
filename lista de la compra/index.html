@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+<style>
+body{
+    font-family: 'Roboto', sans-serif;;
+}
+.contenedor{
+    width: 300px;
+    margin: 0 auto;
+    border: 1px solid #aaa;
+    border-radius: 10px;
+    min-height: 300px;
+}
+
+h3{
+    text-align: center;
+}
+
+.mi_input{
+    margin: 0 auto;
+    width: 80%;
+}
+
+ul{
+    list-style: none;
+}
+
+span{
+    border: 1px solid #ccc;
+    padding: 1px 3px;
+    color: red;
+
+}
+
+
+
+</style>
+
+    <body>
+
+        
+
+    <script>
+        var app = angular.module("myShoppingList", []); 
+        app.controller("myCtrl", function($scope) {
+            $scope.productos = ["Leche", "Pan", "Queso"];
+
+            $scope.addItem = function () {
+                $scope.errortext = "";
+                if (!$scope.addMe) {
+                    return;
+                }
+
+                if ($scope.productos.indexOf($scope.addMe) == -1) {
+                    $scope.productos.push($scope.addMe);
+                    $scope.addMe = "";
+                } else {
+                    $scope.errortext = "The item is already in your shopping list.";
+                 }
+
+    
+               
+            }
+
+            $scope.removeItem = function (x) {
+                $scope.errortext = "";
+                $scope.productos.splice(x, 1);
+            }
+
+            // para que funcione el retorno de carro para mandar nuevo item
+            $scope.myFunction = function(event) {
+                if(event.keyCode == 13) {   // '13' is the key code for enter
+                $scope.addItem();
+                }
+            }
+        });
+    
+    </script>
+
+    <div ng-app="myShoppingList" ng-controller="myCtrl" class="contenedor">
+
+        <header>
+            <h3>Mi lista de la compra</h3>
+        </header>
+        <ul>
+            <!-- Se repite el li tantas veces como elementos tiene el array productos -->
+            <li ng-repeat="producto in productos">
+                {{producto}} <span ng-click="removeItem($index)">&times;</span>
+            </li>
+        </ul>
+        <p class="mi_input">
+            <input ng-model="addMe" ng-keydown="myFunction($event)">
+            <button ng-click="addItem()">Añadir</button>
+            <p>{{errortext}}</p>
+        </p>
+        
+    </div>
+
+   
+
+</body>
+</html>

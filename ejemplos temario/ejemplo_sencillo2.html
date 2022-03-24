@@ -1,0 +1,29 @@
+<html ng-app>
+<head>
+  <title>Hello World en AngularJS</title>
+</head>
+<body ng-controller="ControladorTareas">
+
+<ul>
+  <li ng-repeat="tarea in tareas">
+    <input type="checkbox" ng-model="tarea.completed">
+    {{ tarea.nombre }}
+  </li>
+</ul>
+
+<script>
+  function ControladorTareas($scope){
+    $scope.tareas = [
+      { nombre: 'Master HTML/CSS/Javascript', completed: true },
+      { nombre: 'Learn AngularJS', completed: false },
+      { nombre: 'Build NodeJS backend', completed: false },
+      { nombre: 'Get started with ExpressJS', completed: false },
+      { nombre: 'Setup MongoDB database', completed: false },
+      { nombre: 'Be awesome!', completed: false },
+    ]
+  }
+</script>
+  
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+</body>
+</html>

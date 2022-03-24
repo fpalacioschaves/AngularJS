@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+    <!--<div ng-app="" ng-init="myCol='blue'">
+
+	<input style="background-color:{{myCol}}" ng-model="myCol">
+
+	</div>
+	
+	<div ng-app="" ng-init="quantity=1;cost=5">
+
+	<p>Total in dollar: 
+	<span ng-bind="quantity * cost"></span>
+	<span>total en dolares : {{quantity * cost}}</span>
+	</p>
+
+	</div>
+	
+	
+	<div ng-app="" ng-init="firstName='John';lastName='Doe'">
+
+		<p>The name is {{ firstName + " " + lastName }}</p>
+
+		</div>-->
+		
+		<div ng-app="" ng-init="firstName='John';lastName='Doe'">
+
+<p>The name is <span ng-bind="firstName + ' ' + lastName"></span></p>
+
+</div>
+</body>
+</html>
